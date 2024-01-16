@@ -1,9 +1,9 @@
-import React from "react";
-import logo from "../../assets/images/logo_white.svg";
-import { features } from "../../constants";
-import { resources } from "../../constants";
-import { company } from "../../constants";
-import { labels } from "../../constants";
+import React from 'react';
+import logo from '../../assets/images/logo_white.svg';
+import { features } from '../../constants';
+import { resources } from '../../constants';
+import { company } from '../../constants';
+import { labels } from '../../constants';
 
 const Footer = () => {
   return (
@@ -14,32 +14,32 @@ const Footer = () => {
           <div className="flex flex-col">
             <p className="font-bold mb-6">Features</p>
             <ul className="flex flex-col text-text-clr-primary font-[500] gap-2">
-              {features.map((item) => {
-                return <li>{item.nameLink}</li>;
+              {features.map((item, index) => {
+                return <li key={index}>{item.nameLink}</li>;
               })}
             </ul>
           </div>
           <div>
             <p className="font-bold mb-6">Resources</p>
             <ul className="flex flex-col text-text-clr-primary font-[500] gap-2">
-              {resources.map((item) => {
-                return <li>{item.nameLink}</li>;
+              {resources.map((item, index) => {
+                return <li key={index}>{item.nameLink}</li>;
               })}
             </ul>
           </div>
           <div>
             <p className="font-bold mb-6">Company</p>
             <ul className="flex flex-col text-text-clr-primary font-[500] gap-2">
-              {company.map((item) => {
-                return <li>{item.nameLink}</li>;
+              {company.map((item, index) => {
+                return <li key={index}>{item.nameLink}</li>;
               })}
             </ul>
           </div>
         </div>
         <ul className="flex gap-6">
-          {labels.map((item) => {
+          {labels.map((item, index) => {
             return (
-              <li>
+              <li key={index}>
                 <img src={item.urlCompany} alt={item.altText} />
               </li>
             );
