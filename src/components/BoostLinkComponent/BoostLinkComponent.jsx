@@ -1,4 +1,5 @@
 import React from "react";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const BoostLinkComponent = () => {
   return (
@@ -6,9 +7,12 @@ const BoostLinkComponent = () => {
       <h1 className="text-[2.5rem] text-white font-bold max-[600px]:text-[1.7rem]">
         Boost your links today
       </h1>
-      <button className="flex items-center bg-btn-bg hover:bg-btn-header-hover text-text-btn-hover text-xl font-bold rounded-3xl px-8 py-3">
+      <AnchorLink
+        href="#shortering-form"
+        className="flex items-center bg-btn-bg hover:bg-btn-header-hover text-text-btn-hover text-xl font-bold rounded-3xl px-8 py-3"
+      >
         Get Started
-      </button>
+      </AnchorLink>
     </section>
   );
 };

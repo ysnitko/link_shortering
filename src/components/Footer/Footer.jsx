@@ -60,7 +60,7 @@ const Footer = () => {
         <ul className="flex gap-6 max-[600px]:mt-4">
           {labels.map((item, index) => {
             return (
-              <li key={index}>
+              <li key={index} className="hover:cursor-pointer">
                 <img src={item.urlCompany} alt={item.altText} />
               </li>
             );
