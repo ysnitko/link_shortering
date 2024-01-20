@@ -39,12 +39,17 @@ const Header = () => {
             </button>
           </div>
         </div>
-        <button
-          className=" hidden p-2 max-[600px]:flex  rotate-90 gap-4 w-12 text-text-clr-maincomponent text"
-          onClick={showMenu}
-        >
-          | | |
-        </button>
+        {isShowMenu ? (
+          <button
+            className=" hidden max-[600px]:block bg-bg-close bg-no-repeat bg-cover w-[35px] h-[35px] p-2"
+            onClick={showMenu}
+          ></button>
+        ) : (
+          <button
+            className=" hidden max-[600px]:block bg-bg-burger bg-no-repeat bg-cover w-[35px] h-[35px]"
+            onClick={showMenu}
+          ></button>
+        )}
       </nav>
     </header>
   );
