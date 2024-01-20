@@ -1,59 +1,49 @@
-import React, { useState, useRef } from "react";
-import Card from "../Card/Card";
+import React, { useState, useRef } from 'react';
+import Card from '../Card/Card';
 
 const ShortenComponent = () => {
   const [shortenLink, setShortenLink] = useState([]);
+  const [linkResult, setLinkResult] = useState('');
   const [copied, setCopied] = useState(false);
   const [isError, setIsError] = useState(false);
-  const inputLink = useRef("");
+  const inputLink = useRef('');
 
-  // const fetchData = async (longURL) => {
-  //   await fetch('https://api-ssl.bitly.com/v4/shorten', {
-  //     method: 'GET',
-  //     mode: 'cors',
-  //     headers: {
-  //       Authorization: `Bearer ${process.env.REACT_APP_BITLY_TOKEN}`,
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       long_url: longURL,
-  //       domain: 'bit.ly',
-  //       group_guid: `${process.env.REACT_APP_GUID}`,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       const new_link = data.link.replace('https://', '');
-  //       fetch(
-  //         `https://api-ssl.bitly.com/v4/bitlinks/${new_link}/qr?image_format=png`,
-  //         {
-  //           mode: 'cors',
-  //           headers: {
-  //             Authorization: `Bearer ${process.env.REACT_APP_BITLY_TOKEN}`,
-  //           },
-  //         }
-  //       )
-  //         .then((response) => response.json())
-  //         .then((result) => {
-  //           console.log(result);
-  //         });
-  //     });
-  // };
+  const fetchData = async (userLink) => {
+    const url = 'https://url-shortener-service.p.rapidapi.com/shorten';
+    const options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'X-RapidAPI-Key': 'd283c05ca3mshc620d89ee54a983p1af70bjsn5fb117c8c866',
+        'X-RapidAPI-Host': 'url-shortener-service.p.rapidapi.com',
+      },
+      body: new URLSearchParams({
+        url: `${userLink}`,
+      }),
+    };
+    try {
+      const response = await fetch(url, options);
+      const result = await response.json();
+      setLinkResult(result.result_url);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const onSumbit = async (event) => {
     event.preventDefault();
-    if (inputLink.current.value === "") {
+    if (inputLink.current.value === '') {
       setIsError(true);
       return;
     } else {
       setIsError(false);
+      fetchData(inputLink.current.value);
       setShortenLink([
         ...shortenLink,
         { id: Date.now(), linkName: inputLink.current.value, copy: false },
       ]);
-      inputLink.current.value = "";
+      inputLink.current.value = '';
     }
-
     console.log(inputLink.current.value);
   };
 
@@ -88,15 +78,15 @@ const ShortenComponent = () => {
       >
         <label htmlFor="link" className="w-full relative flex">
           <input
-            style={{ outlineColor: isError && "hsl(0, 87%, 67%)" }}
+            style={{ outlineColor: isError && 'hsl(0, 87%, 67%)' }}
             ref={inputLink}
             type="text"
             name=""
             id="link"
             className={
               isError
-                ? "w-full px-7 py-4 rounded-xl outline-none text-xl font-[500] text-text-clr-headers max-[600px]:rounded-[3px] max-[600px]:p-[10px] max-[600px]:text-base placeholder:text-outline-clr"
-                : "w-full px-7 py-4 rounded-xl outline-none text-xl font-[500] text-text-clr-headers max-[600px]:rounded-[3px] max-[600px]:p-[10px] max-[600px]:text-base"
+                ? 'w-full px-7 py-4 rounded-xl outline-none text-xl font-[500] text-text-clr-headers max-[600px]:rounded-[3px] max-[600px]:p-[10px] max-[600px]:text-base placeholder:text-outline-clr'
+                : 'w-full px-7 py-4 rounded-xl outline-none text-xl font-[500] text-text-clr-headers max-[600px]:rounded-[3px] max-[600px]:p-[10px] max-[600px]:text-base'
             }
             placeholder="Shorten a link here..."
           />
@@ -105,7 +95,7 @@ const ShortenComponent = () => {
               Please add a link
             </span>
           ) : (
-            ""
+            ''
           )}
         </label>
         <button className="bg-btn-bg hover:bg-btn-header-hover text-text-btn-hover text-xl font-bold rounded-xl px-8 py-4 min-w-[9em] max-[600px]:w-full max-[600px]:rounded-md max-[600px]:text-lg max-[600px]:py-[10px]">
@@ -122,6 +112,7 @@ const ShortenComponent = () => {
                 id={item.id}
                 copyLink={copyLink}
                 copied={item.copy}
+                linkResult={linkResult}
               />
             );
           })
