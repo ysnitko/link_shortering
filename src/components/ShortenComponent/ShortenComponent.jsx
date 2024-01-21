@@ -4,10 +4,9 @@ import Card from '../Card/Card';
 const ShortenComponent = () => {
   const [copied, setCopied] = useState(false);
   const [isError, setIsError] = useState(false);
-  const inputLink = useRef('');
-
   const listLink = JSON.parse(localStorage.getItem('shortenLink'));
   const [shortenLink, setShortenLink] = useState(listLink || []);
+  const inputLink = useRef('');
 
   useEffect(() => {
     localStorage.setItem('shortenLink', JSON.stringify(shortenLink));
@@ -47,6 +46,8 @@ const ShortenComponent = () => {
     event.preventDefault();
     if (inputLink.current.value === '') {
       setIsError(true);
+      return;
+    } else if (!inputLink.current.value.startsWith('http')) {
       return;
     } else {
       setIsError(false);
@@ -95,7 +96,8 @@ const ShortenComponent = () => {
                 ? 'w-full px-7 py-4 rounded-xl outline-none text-xl font-[500] text-text-clr-headers max-[600px]:rounded-[3px] max-[600px]:p-[10px] max-[600px]:text-base placeholder:text-outline-clr'
                 : 'w-full px-7 py-4 rounded-xl outline-none text-xl font-[500] text-text-clr-headers max-[600px]:rounded-[3px] max-[600px]:p-[10px] max-[600px]:text-base'
             }
-            placeholder="Shorten a link here..."
+            placeholder="
+            The link must start with http.."
           />
           {isError ? (
             <span className="absolute -bottom-6 text-[12px] italic text-outline-clr">
