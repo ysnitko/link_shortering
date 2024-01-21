@@ -1,12 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Card from '../Card/Card';
 
 const ShortenComponent = () => {
-  const [shortenLink, setShortenLink] = useState([]);
-  const [linkResult, setLinkResult] = useState('');
   const [copied, setCopied] = useState(false);
   const [isError, setIsError] = useState(false);
   const inputLink = useRef('');
+
+  const listLink = JSON.parse(localStorage.getItem('shortenLink'));
+  const [shortenLink, setShortenLink] = useState(listLink || []);
+
+  useEffect(() => {
+    localStorage.setItem('shortenLink', JSON.stringify(shortenLink));
+  }, [shortenLink]);
 
   const fetchData = async (userLink) => {
     const url = 'https://url-shortener-service.p.rapidapi.com/shorten';
@@ -24,7 +29,15 @@ const ShortenComponent = () => {
     try {
       const response = await fetch(url, options);
       const result = await response.json();
-      setLinkResult(result.result_url);
+      setShortenLink([
+        ...shortenLink,
+        {
+          id: Date.now(),
+          linkName: inputLink.current.value,
+          copy: false,
+          resultLink: result.result_url,
+        },
+      ]);
     } catch (error) {
       console.error(error);
     }
@@ -37,14 +50,9 @@ const ShortenComponent = () => {
       return;
     } else {
       setIsError(false);
-      fetchData(inputLink.current.value);
-      setShortenLink([
-        ...shortenLink,
-        { id: Date.now(), linkName: inputLink.current.value, copy: false },
-      ]);
+      await fetchData(inputLink.current.value);
       inputLink.current.value = '';
     }
-    console.log(inputLink.current.value);
   };
 
   const copyLink = (event, link) => {
@@ -64,7 +72,6 @@ const ShortenComponent = () => {
       setShortenLink(updateLink);
       setCopied(!copied);
     }
-    console.log(`'Copied the text: ' + ${link}`);
   };
 
   return (
@@ -112,7 +119,7 @@ const ShortenComponent = () => {
                 id={item.id}
                 copyLink={copyLink}
                 copied={item.copy}
-                linkResult={linkResult}
+                resultLink={item.resultLink}
               />
             );
           })
