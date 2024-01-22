@@ -1,6 +1,6 @@
 # URL shortening API landing page
 
-This is a solution to the [URL shortening API landing page](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G).
+This is a solution to the [URL shortening API landing page on Frontend Mentor](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G).
 
 ## Table of contents
 
