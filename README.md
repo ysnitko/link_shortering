@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# URL shortening API landing page
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [URL shortening API landing page](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G).
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [How to start](#how-to-start)
+  - [Features](#features)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+  - [Built with](#built-with)
+  - [Useful resources](#useful-resources)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### How to start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Create a directory in which the project will be located.
 
-### `npm test`
+2. Using a terminal launched from your development environment, go to the created directory and execute the command git clone https://github.com/ysnitko/link_shortering.git.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Run the command in the terminal: cd link_shorteriing.
 
-### `npm run build`
+4. To download the necessary libraries used in the project, run the command in the terminal npm i.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. After downloading the libraries and dependencies, we start building the project using the command npm run start.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6. The project will launch automatically in the browser or will be available at http://localhost:3000.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Features
 
-### `npm run eject`
+Users should be able to:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- View the optimal layout for each page depending on their device's screen size
+- Saving the history of shortened links in local storage
+- Сopying a shortened link to the clipboard by pressing the "Copy" button next to the link
+- In case of errors, the error text is displayed
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Screenshot
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![LINK SHORTERING](https://github.com/ysnitko/link_shortering/blob/main/src/assets/images/Screenshot1.png)
+![LINK SHORTERING](https://github.com/ysnitko/link_shortering/blob/main/src/assets/images/Screenshot2.png)
+![LINK SHORTERING](https://github.com/ysnitko/link_shortering/blob/main/src/assets/images/Screenshot3.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Links
 
-## Learn More
+- Source code: [https://github.com/ysnitko/link_shortering.git](https://github.com/ysnitko/link_shortering.git)
+- Live Site URL: [https://link-shortering-app.netlify.app/](https://link-shortering-app.netlify.app/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Built with
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [React](https://reactjs.org/) - JS library
+- [TailwindCSS](https://tailwindcss.com/) - For styles
 
-### Code Splitting
+### Useful resources
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [React Anchor Link Smooth Scroll Package](https://www.npmjs.com/package/react-anchor-link-smooth-scroll)
+- [Tailwindcss Documentation](https://tailwindcss.com/docs/installation)
+- [Url Shortener Service API](https://rapidapi.com/BigLobster/api/url-shortener-service/)
